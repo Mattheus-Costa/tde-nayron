@@ -17,6 +17,12 @@ Lista* cria_lista(){
 }
 
 void libera_lista(Lista *li){
+   if (li == NULL)
+        return;
+
+    for (int i = 0; i < li->qtd; i++)
+        free(li->dados[i]);
+
     free(li);
 }
 

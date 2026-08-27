@@ -6,7 +6,7 @@
 
 int main()
 {
-    Lista *li;
+    Lista *li = NULL;
     int n, escolha;
 
 
@@ -19,11 +19,28 @@ int main()
     
     switch(escolha){
         case 1:
-             li = cria_lista();
-             printf("Lista criada!\n");
-             break;
+                if (li != NULL) {
+                    printf("A lista ja foi criada!\n");
+                    break;
+                    }
+                li = cria_lista();
+                if (li != NULL) {
+                        printf("Lista criada!\n");
+                    }
+                else{
+                    printf("Falha ao criar a lista!");
+                }
+                
+                break;
 
        case 2:
+
+
+                if (li == NULL) {
+                printf("Crie uma lista primeiro!\n");
+                break;
+            }
+
                 printf("Quantos produtos voce deseja cadastrar?: ");
                 scanf("%d", &n);
                
@@ -32,7 +49,12 @@ int main()
 
                     Produto *p1;
                 
-                    p1 = malloc(sizeof(Produto));   
+                    p1 = malloc(sizeof(Produto)); 
+                    
+                       if (p1 == NULL) {
+                    printf("Erro ao alocar produto!\n");
+                    break;
+                }
 
                     printf("Digite o nome do produto: ");
                     scanf(" %29[^\n]", p1->nome);
@@ -52,11 +74,22 @@ int main()
              break;  
 
         case 3:
+                    if (li == NULL) {
+                printf("Crie uma lista primeiro!\n");
+                break;
+            }
+
             exibe_lista(li);
             break;  
 
         case 4:
             {
+
+                            if (li == NULL) {
+                    printf("Crie uma lista primeiro!\n");
+                    break;
+                }
+
                   Produto *p;
 
                 p = malloc(sizeof(Produto));
@@ -103,7 +136,7 @@ int main()
 
                    if (busca_lista_cod(li, cod, &p)) {
                     printf("Produto: %s\nEstoque: %d\n", p->nome, p->estoque);
-                    free(p);
+                 
                 }
                 else {
                     printf("Produto nao encontrado!\n");
@@ -127,7 +160,7 @@ int main()
 
                    if (busca_lista_pos(li, pos, &p)) {
                     printf("Produto: %s\nEstoque: %d\n", p->nome, p->estoque);
-                    free(p);
+                   
                 }
                 else {
                     printf("Produto nao encontrado!\n");
@@ -158,6 +191,10 @@ int main()
                 }
                 break; 
                }
+
+        case 8:
+               printf("Encerrando...");
+               break;
          
         default:
             printf("Opcao Invalida!");
@@ -168,7 +205,7 @@ int main()
 
 } while(escolha !=8);
 
- 
+ libera_lista(li);
 
 return 0;
 } 
