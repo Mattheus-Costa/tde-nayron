@@ -26,6 +26,17 @@ void libera_lista(Lista *li){
     free(li);
 }
 
+int insere_lista(Lista *li, Produto *p){
+    if (li == NULL)
+        return 0;
+
+    if (li->qtd == 100)
+        return 0;
+    
+    li->dados[li->qtd] = p;
+    li->qtd++;
+    return 1;
+}
 int busca_lista_cod(Lista *li, int cod, Produto **p){
     if (li == NULL)
         return 0;
@@ -48,17 +59,7 @@ int busca_lista_pos (Lista *li, int pos, Produto **p){
     return 1;
 }
 
-int insere_lista(Lista *li, Produto *p){
-    if (li == NULL)
-        return 0;
 
-    if (li->qtd == 100)
-        return 0;
-    
-    li->dados[li->qtd] = p;
-    li->qtd++;
-    return 1;
-}
 
 int remove_lista(Lista *li, int cod, Produto **p){
     if (li == NULL)

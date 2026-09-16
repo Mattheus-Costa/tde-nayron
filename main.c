@@ -12,8 +12,15 @@ int main()
 
     do{
         
-    printf("Selecione a acao:\n");
-    printf("(1) Cadastrar nova lista\n(2) Cadastrar Produtos\n(3) Exibir Lista cadastrada\n(4) Inserir Produtos\n(5) Buscar Produto por Codigo\n(6) Buscar Produto por Posicao \n(7) Remover Produto\n(8) Sair \n Digite: ");
+    printf ("Selecione a acao:\n");
+    printf ("(1) Cadastrar nova lista\n");
+    printf ("(2) Inserir Produtos\n");
+    printf ("(3) Exibir Lista cadastrada\n");
+    printf ("(4) Buscar Produto por Codigo\n");
+    printf ("(5) Buscar Produto por Posicao \n");
+    printf ("(6) Remover Produto\n");
+    printf ("(7) Sair \n ");
+    printf ("Digite: ");
 
     scanf("%d", &escolha);
     
@@ -81,46 +88,9 @@ int main()
 
             exibe_lista(li);
             break;  
-
-        case 4:
-            {
-
-                            if (li == NULL) {
-                    printf("Crie uma lista primeiro!\n");
-                    break;
-                }
-
-                  Produto *p;
-
-                p = malloc(sizeof(Produto));
-
-                if (p == NULL) {
-                    printf("Erro ao alocar produto!\n");
-                    break;
-                }
-
-                printf("Digite o nome do produto: ");
-                getchar();
-                fgets(p->nome, 30, stdin);
-
-                printf("Digite o codigo do produto: ");
-                scanf("%d", &p->codigo);
-
-                printf("Digite o estoque do produto: ");
-                scanf("%d", &p->estoque);
-
-                if (!insere_lista(li, p)) {
-                    printf("Erro ao inserir produto!\n");
-                    free(p);
-                }
-                else {
-                    printf("Produto inserido com sucesso!\n");
-                }
-                break;
-            }
            
 
-        case 5:
+        case 4:
 
          {
                 if (li == NULL) {
@@ -145,7 +115,7 @@ int main()
          }
               
 
-        case 6:
+        case 5:
          {
                 if (li == NULL) {
                     printf("Crie uma lista primeiro!\n");
@@ -169,7 +139,7 @@ int main()
          }
 
 
-         case 7:
+         case 6:
           {
                 if (li == NULL) {
                     printf("Crie uma lista primeiro!\n");
@@ -192,7 +162,7 @@ int main()
                 break; 
                }
 
-        case 8:
+        case 7:
                printf("Encerrando...");
                break;
          
@@ -203,7 +173,7 @@ int main()
    
 
 
-} while(escolha !=8);
+} while(escolha !=7);
 
  libera_lista(li);
 
